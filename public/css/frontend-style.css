@@ -1,0 +1,130 @@
+#nfd-flashsale-wrapper {
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 999999;
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	pointer-events: none; /* Let clicks pass through empty areas */
+}
+
+/* Make actual elements clickable */
+#nfd-flashsale-wrapper .nfd-banner-link,
+#nfd-flashsale-wrapper .nfd-floating-cta,
+#nfd-flashsale-wrapper .nfd-bottom-btn {
+	pointer-events: auto;
+}
+
+/* Banner */
+.nfd-banner {
+	position: relative;
+	width: 100%;
+	line-height: 0;
+}
+.nfd-banner img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+.nfd-timer-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+.nfd-digit {
+	position: absolute;
+	color: var(--nfd-font-color, #ffffff);
+	font-size: var(--nfd-font-size, 24px);
+	font-weight: bold;
+	transform: translate(-50%, -50%);
+	line-height: 1;
+	font-family: inherit;
+}
+
+/* Floating CTAs */
+.nfd-floating-ctas {
+	position: absolute;
+	bottom: 100%;
+	width: 100%;
+	pointer-events: none;
+}
+.nfd-floating-cta {
+	position: absolute;
+	bottom: 10px; /* gap above banner */
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s;
+	background: #fff;
+	color: inherit;
+	text-decoration: none !important;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.nfd-floating-cta:hover {
+	transform: scale(1.1);
+}
+.nfd-floating-cta img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+}
+.nfd-floating-left { left: 10px; }
+.nfd-floating-right { right: 10px; }
+
+/* Bottom Bar CTAs */
+.nfd-bottom-bar {
+	display: flex;
+	width: 100%;
+	pointer-events: auto;
+}
+.nfd-bottom-btn {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 15px;
+	text-decoration: none !important;
+	transition: opacity 0.2s;
+	position: relative;
+	overflow: hidden;
+}
+.nfd-bottom-btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+	transform: skewX(-25deg);
+	animation: nfd-sweep-glow 10s infinite;
+}
+@keyframes nfd-sweep-glow {
+	0% { left: -100%; }
+	40% { left: 200%; }
+	100% { left: 200%; }
+}
+.nfd-bottom-btn:hover {
+	filter: brightness(1.15);
+}
+.nfd-btn-icon {
+	width: 24px;
+	height: 24px;
+	margin-right: 8px;
+	object-fit: contain;
+}
+.nfd-btn-text {
+	font-weight: bold;
+	font-size: 16px;
+}
