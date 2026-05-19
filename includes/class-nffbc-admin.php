@@ -31,35 +31,35 @@ class NFFBC_Admin {
 			
 			// Localize script for text
 			wp_localize_script( $this->plugin_name, 'nffbc_flashsale_admin', array(
-				'upload_title' => __( 'Choose Image', 'nffbc_flashsale' ),
-				'upload_button' => __( 'Use Image', 'nffbc_flashsale' )
+				'upload_title' => __( 'Choose Image', 'nffbc-flashsale' ),
+				'upload_button' => __( 'Use Image', 'nffbc-flashsale' )
 			));
 		}
 	}
 
 	public function register_post_type() {
 		$labels = array(
-			'name'                  => _x( 'Flash Sales', 'Post Type General Name', 'nffbc_flashsale' ),
-			'singular_name'         => _x( 'Flash Sale', 'Post Type Singular Name', 'nffbc_flashsale' ),
-			'menu_name'             => __( 'Flash Sales', 'nffbc_flashsale' ),
-			'name_admin_bar'        => __( 'Flash Sale', 'nffbc_flashsale' ),
-			'archives'              => __( 'Item Archives', 'nffbc_flashsale' ),
-			'attributes'            => __( 'Item Attributes', 'nffbc_flashsale' ),
-			'parent_item_colon'     => __( 'Parent Item:', 'nffbc_flashsale' ),
-			'all_items'             => __( 'All Flash Sales', 'nffbc_flashsale' ),
-			'add_new_item'          => __( 'Add New Flash Sale', 'nffbc_flashsale' ),
-			'add_new'               => __( 'Add New', 'nffbc_flashsale' ),
-			'new_item'              => __( 'New Item', 'nffbc_flashsale' ),
-			'edit_item'             => __( 'Edit Item', 'nffbc_flashsale' ),
-			'update_item'           => __( 'Update Item', 'nffbc_flashsale' ),
-			'view_item'             => __( 'View Item', 'nffbc_flashsale' ),
-			'view_items'            => __( 'View Items', 'nffbc_flashsale' ),
-			'search_items'          => __( 'Search Item', 'nffbc_flashsale' ),
-			'not_found'             => __( 'Not found', 'nffbc_flashsale' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'nffbc_flashsale' ),
+			'name'                  => _x( 'Flash Sales', 'Post Type General Name', 'nffbc-flashsale' ),
+			'singular_name'         => _x( 'Flash Sale', 'Post Type Singular Name', 'nffbc-flashsale' ),
+			'menu_name'             => __( 'Flash Sales', 'nffbc-flashsale' ),
+			'name_admin_bar'        => __( 'Flash Sale', 'nffbc-flashsale' ),
+			'archives'              => __( 'Item Archives', 'nffbc-flashsale' ),
+			'attributes'            => __( 'Item Attributes', 'nffbc-flashsale' ),
+			'parent_item_colon'     => __( 'Parent Item:', 'nffbc-flashsale' ),
+			'all_items'             => __( 'All Flash Sales', 'nffbc-flashsale' ),
+			'add_new_item'          => __( 'Add New Flash Sale', 'nffbc-flashsale' ),
+			'add_new'               => __( 'Add New', 'nffbc-flashsale' ),
+			'new_item'              => __( 'New Item', 'nffbc-flashsale' ),
+			'edit_item'             => __( 'Edit Item', 'nffbc-flashsale' ),
+			'update_item'           => __( 'Update Item', 'nffbc-flashsale' ),
+			'view_item'             => __( 'View Item', 'nffbc-flashsale' ),
+			'view_items'            => __( 'View Items', 'nffbc-flashsale' ),
+			'search_items'          => __( 'Search Item', 'nffbc-flashsale' ),
+			'not_found'             => __( 'Not found', 'nffbc-flashsale' ),
+			'not_found_in_trash'    => __( 'Not found in Trash', 'nffbc-flashsale' ),
 		);
 		$args = array(
-			'label'                 => __( 'Flash Sale', 'nffbc_flashsale' ),
+			'label'                 => __( 'Flash Sale', 'nffbc-flashsale' ),
 			'labels'                => $labels,
 			'supports'              => array( 'title' ),
 			'hierarchical'          => false,
@@ -82,7 +82,7 @@ class NFFBC_Admin {
 	public function add_meta_boxes() {
 		add_meta_box(
 			'nffbc_flashsale_settings',
-			__( 'Flash Sale Settings', 'nffbc_flashsale' ),
+			__( 'Flash Sale Settings', 'nffbc-flashsale' ),
 			array( $this, 'render_meta_box' ),
 			'nffbc_flashsale',
 			'normal',
@@ -171,8 +171,8 @@ class NFFBC_Admin {
 		if ( ! is_array( $ctas_bottom ) ) {
 			$ctas_bottom = array(
 				'layout' => 'split', // none, full, split
-				'btn1' => array('text' => 'สอบถาม', 'link' => '', 'bg_color' => '#00B900', 'color' => '#ffffff', 'icon' => 'line'),
-				'btn2' => array('text' => 'โทร', 'link' => '', 'bg_color' => '#f05a28', 'color' => '#ffffff', 'icon' => 'phone')
+				'btn1' => array('text' => 'เธชเธญเธเธ–เธฒเธก', 'link' => '', 'bg_color' => '#00B900', 'color' => '#ffffff', 'icon' => 'line'),
+				'btn2' => array('text' => 'เนเธ—เธฃ', 'link' => '', 'bg_color' => '#f05a28', 'color' => '#ffffff', 'icon' => 'phone')
 			);
 		}
 		

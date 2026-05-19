@@ -6,7 +6,7 @@
  * Author:      Newfolder
  * Author URI:  https://newfolder.co.th
  * License:     GPL-2.0+
- * Text Domain: nffbc_flashsale
+ * Text Domain: nffbc-flashsale
  */
 
 // If this file is called directly, abort.
