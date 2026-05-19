@@ -1,7 +1,7 @@
-.nfd-preview-wrap {
+.nffbc-preview-wrap {
 	display: inline-block;
 }
-.nfd-timer-overlay {
+.nffbc-timer-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -9,7 +9,7 @@
 	height: 100%;
 	pointer-events: none; /* Let clicks pass through except on digits */
 }
-.nfd-digit {
+.nffbc-digit {
 	position: absolute;
 	color: inherit;
 	font-size: inherit;
@@ -21,11 +21,11 @@
 	line-height: 1;
 	font-family: inherit;
 }
-.nfd-digit:hover {
+.nffbc-digit:hover {
 	outline: 1px dashed rgba(0, 120, 215, 0.8);
 	background: rgba(0, 120, 215, 0.1);
 }
-.nfd-cta-settings {
+.nffbc-cta-settings {
 	background: #f9f9f9;
 	padding: 15px;
 	border-left: 4px solid #0073aa;

@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-	if (typeof nfd_flashsale_data === 'undefined') return;
+	if (typeof nffbc_flashsale_data === 'undefined') return;
 
-	var wrapper = document.getElementById('nfd-flashsale-wrapper');
+	var wrapper = document.getElementById('newfolder-flashsale-banner-with-counter-wrapper');
 	if (!wrapper) return;
 
-	var baseEndTime = new Date(nfd_flashsale_data.endTime).getTime();
-	var loopHours = parseInt(nfd_flashsale_data.loopHours, 10) || 0;
+	var baseEndTime = new Date(nffbc_flashsale_data.endTime).getTime();
+	var loopHours = parseInt(nffbc_flashsale_data.loopHours, 10) || 0;
 	var loopMs = loopHours * 3600 * 1000;
 
 	function calculateEndTime() {
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	wrapper.style.display = '';
 
 	var elements = {
-		h1: document.querySelectorAll('.nfd-digit-h1'),
-		h2: document.querySelectorAll('.nfd-digit-h2'),
-		m1: document.querySelectorAll('.nfd-digit-m1'),
-		m2: document.querySelectorAll('.nfd-digit-m2'),
-		s1: document.querySelectorAll('.nfd-digit-s1'),
-		s2: document.querySelectorAll('.nfd-digit-s2')
+		h1: document.querySelectorAll('.nffbc-digit-h1'),
+		h2: document.querySelectorAll('.nffbc-digit-h2'),
+		m1: document.querySelectorAll('.nffbc-digit-m1'),
+		m2: document.querySelectorAll('.nffbc-digit-m2'),
+		s1: document.querySelectorAll('.nffbc-digit-s1'),
+		s2: document.querySelectorAll('.nffbc-digit-s2')
 	};
 
 	function updateDigits(nodeList, val) {

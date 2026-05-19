@@ -1,9 +1,13 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * The core plugin class.
  */
-class NFD_Flashsale {
+class NFFBC_Flashsale {
 
 	/**
 	 * The unique identifier of this plugin.
@@ -19,8 +23,8 @@ class NFD_Flashsale {
 	 * Define the core functionality of the plugin.
 	 */
 	public function __construct() {
-		$this->plugin_name = 'nfd-flashsale';
-		$this->version = NFD_FLASHSALE_VERSION;
+		$this->plugin_name = 'newfolder-flashsale-banner-with-counter';
+		$this->version = NFFBC_FLASHSALE_VERSION;
 
 		$this->load_dependencies();
 		$this->define_admin_hooks();
@@ -31,15 +35,15 @@ class NFD_Flashsale {
 	 * Load the required dependencies for this plugin.
 	 */
 	private function load_dependencies() {
-		require_once NFD_FLASHSALE_DIR . 'includes/class-nfd-admin.php';
-		require_once NFD_FLASHSALE_DIR . 'includes/class-nfd-frontend.php';
+		require_once NFFBC_FLASHSALE_DIR . 'includes/class-nffbc-admin.php';
+		require_once NFFBC_FLASHSALE_DIR . 'includes/class-nffbc-frontend.php';
 	}
 
 	/**
 	 * Register all of the hooks related to the admin area functionality.
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new NFD_Admin( $this->plugin_name, $this->version );
+		$plugin_admin = new NFFBC_Admin( $this->plugin_name, $this->version );
 
 		add_action( 'init', array( $plugin_admin, 'register_post_type' ) );
 		add_action( 'add_meta_boxes', array( $plugin_admin, 'add_meta_boxes' ) );
@@ -52,7 +56,7 @@ class NFD_Flashsale {
 	 * Register all of the hooks related to the public-facing functionality.
 	 */
 	private function define_public_hooks() {
-		$plugin_public = new NFD_Frontend( $this->plugin_name, $this->version );
+		$plugin_public = new NFFBC_Frontend( $this->plugin_name, $this->version );
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
