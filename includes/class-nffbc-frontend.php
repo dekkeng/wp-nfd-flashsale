@@ -259,6 +259,6 @@ class NFFBC_Frontend {
 		);
 		wp_localize_script( $this->plugin_name, 'nffbc_flashsale_data', $js_data );
 
-		include NFFBC_FLASHSALE_DIR . 'public/partials/newfolder-flashsale-banner-with-counter-public-display.php';
+		include NFFBC_FLASHSALE_DIR . 'public/partials/nffbc-public-display.php';
 	}
 }

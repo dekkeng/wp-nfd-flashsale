@@ -31,35 +31,35 @@ class NFFBC_Admin {
 			
 			// Localize script for text
 			wp_localize_script( $this->plugin_name, 'nffbc_flashsale_admin', array(
-				'upload_title' => __( 'Choose Image', 'newfolder-flashsale-banner-with-counter' ),
-				'upload_button' => __( 'Use Image', 'newfolder-flashsale-banner-with-counter' )
+				'upload_title' => __( 'Choose Image', 'nffbc_flashsale' ),
+				'upload_button' => __( 'Use Image', 'nffbc_flashsale' )
 			));
 		}
 	}
 
 	public function register_post_type() {
 		$labels = array(
-			'name'                  => _x( 'Flash Sales', 'Post Type General Name', 'newfolder-flashsale-banner-with-counter' ),
-			'singular_name'         => _x( 'Flash Sale', 'Post Type Singular Name', 'newfolder-flashsale-banner-with-counter' ),
-			'menu_name'             => __( 'Flash Sales', 'newfolder-flashsale-banner-with-counter' ),
-			'name_admin_bar'        => __( 'Flash Sale', 'newfolder-flashsale-banner-with-counter' ),
-			'archives'              => __( 'Item Archives', 'newfolder-flashsale-banner-with-counter' ),
-			'attributes'            => __( 'Item Attributes', 'newfolder-flashsale-banner-with-counter' ),
-			'parent_item_colon'     => __( 'Parent Item:', 'newfolder-flashsale-banner-with-counter' ),
-			'all_items'             => __( 'All Flash Sales', 'newfolder-flashsale-banner-with-counter' ),
-			'add_new_item'          => __( 'Add New Flash Sale', 'newfolder-flashsale-banner-with-counter' ),
-			'add_new'               => __( 'Add New', 'newfolder-flashsale-banner-with-counter' ),
-			'new_item'              => __( 'New Item', 'newfolder-flashsale-banner-with-counter' ),
-			'edit_item'             => __( 'Edit Item', 'newfolder-flashsale-banner-with-counter' ),
-			'update_item'           => __( 'Update Item', 'newfolder-flashsale-banner-with-counter' ),
-			'view_item'             => __( 'View Item', 'newfolder-flashsale-banner-with-counter' ),
-			'view_items'            => __( 'View Items', 'newfolder-flashsale-banner-with-counter' ),
-			'search_items'          => __( 'Search Item', 'newfolder-flashsale-banner-with-counter' ),
-			'not_found'             => __( 'Not found', 'newfolder-flashsale-banner-with-counter' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'newfolder-flashsale-banner-with-counter' ),
+			'name'                  => _x( 'Flash Sales', 'Post Type General Name', 'nffbc_flashsale' ),
+			'singular_name'         => _x( 'Flash Sale', 'Post Type Singular Name', 'nffbc_flashsale' ),
+			'menu_name'             => __( 'Flash Sales', 'nffbc_flashsale' ),
+			'name_admin_bar'        => __( 'Flash Sale', 'nffbc_flashsale' ),
+			'archives'              => __( 'Item Archives', 'nffbc_flashsale' ),
+			'attributes'            => __( 'Item Attributes', 'nffbc_flashsale' ),
+			'parent_item_colon'     => __( 'Parent Item:', 'nffbc_flashsale' ),
+			'all_items'             => __( 'All Flash Sales', 'nffbc_flashsale' ),
+			'add_new_item'          => __( 'Add New Flash Sale', 'nffbc_flashsale' ),
+			'add_new'               => __( 'Add New', 'nffbc_flashsale' ),
+			'new_item'              => __( 'New Item', 'nffbc_flashsale' ),
+			'edit_item'             => __( 'Edit Item', 'nffbc_flashsale' ),
+			'update_item'           => __( 'Update Item', 'nffbc_flashsale' ),
+			'view_item'             => __( 'View Item', 'nffbc_flashsale' ),
+			'view_items'            => __( 'View Items', 'nffbc_flashsale' ),
+			'search_items'          => __( 'Search Item', 'nffbc_flashsale' ),
+			'not_found'             => __( 'Not found', 'nffbc_flashsale' ),
+			'not_found_in_trash'    => __( 'Not found in Trash', 'nffbc_flashsale' ),
 		);
 		$args = array(
-			'label'                 => __( 'Flash Sale', 'newfolder-flashsale-banner-with-counter' ),
+			'label'                 => __( 'Flash Sale', 'nffbc_flashsale' ),
 			'labels'                => $labels,
 			'supports'              => array( 'title' ),
 			'hierarchical'          => false,
@@ -82,7 +82,7 @@ class NFFBC_Admin {
 	public function add_meta_boxes() {
 		add_meta_box(
 			'nffbc_flashsale_settings',
-			__( 'Flash Sale Settings', 'newfolder-flashsale-banner-with-counter' ),
+			__( 'Flash Sale Settings', 'nffbc_flashsale' ),
 			array( $this, 'render_meta_box' ),
 			'nffbc_flashsale',
 			'normal',
@@ -183,14 +183,14 @@ class NFFBC_Admin {
 		$pages = get_pages();
 		
 		// Render HTML
-		include NFFBC_FLASHSALE_DIR . 'admin/partials/newfolder-flashsale-banner-with-counter-admin-display.php';
+		include NFFBC_FLASHSALE_DIR . 'admin/partials/nffbc-admin-display.php';
 	}
 
 	public function save_meta_boxes( $post_id ) {
 		if ( ! isset( $_POST['nffbc_flashsale_nonce'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( $_POST['nffbc_flashsale_nonce'], 'nffbc_flashsale_save_meta' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nffbc_flashsale_nonce'] ) ), 'nffbc_flashsale_save_meta' ) ) {
 			return;
 		}
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -234,7 +234,8 @@ class NFFBC_Admin {
 		// Digit positions
 		if ( isset( $_POST['_nffbc_digit_positions_pc'] ) && is_array( $_POST['_nffbc_digit_positions_pc'] ) ) {
 			$positions_pc = array();
-			foreach ( wp_unslash( $_POST['_nffbc_digit_positions_pc'] ) as $key => $pos ) {
+			$sanitized_pos_pc = map_deep( wp_unslash( $_POST['_nffbc_digit_positions_pc'] ), 'sanitize_text_field' );
+			foreach ( $sanitized_pos_pc as $key => $pos ) {
 				$positions_pc[ sanitize_text_field( $key ) ] = array(
 					'x' => sanitize_text_field( $pos['x'] ),
 					'y' => sanitize_text_field( $pos['y'] ),
@@ -244,7 +245,8 @@ class NFFBC_Admin {
 		}
 		if ( isset( $_POST['_nffbc_digit_positions_mobile'] ) && is_array( $_POST['_nffbc_digit_positions_mobile'] ) ) {
 			$positions_mobile = array();
-			foreach ( wp_unslash( $_POST['_nffbc_digit_positions_mobile'] ) as $key => $pos ) {
+			$sanitized_pos_mobile = map_deep( wp_unslash( $_POST['_nffbc_digit_positions_mobile'] ), 'sanitize_text_field' );
+			foreach ( $sanitized_pos_mobile as $key => $pos ) {
 				$positions_mobile[ sanitize_text_field( $key ) ] = array(
 					'x' => sanitize_text_field( $pos['x'] ),
 					'y' => sanitize_text_field( $pos['y'] ),
@@ -262,7 +264,7 @@ class NFFBC_Admin {
 
 		// CTAs Bottom
 		if ( isset( $_POST['_nffbc_ctas_bottom'] ) && is_array( $_POST['_nffbc_ctas_bottom'] ) ) {
-			$ctas_bottom = wp_unslash( $_POST['_nffbc_ctas_bottom'] );
+			$ctas_bottom = map_deep( wp_unslash( $_POST['_nffbc_ctas_bottom'] ), 'sanitize_text_field' );
 			
 			// Process custom icon
 			if ( isset($ctas_bottom['btn1']['icon']) && $ctas_bottom['btn1']['icon'] === 'custom' ) {
@@ -281,7 +283,7 @@ class NFFBC_Admin {
 		// CTAs Floating
 		if ( isset( $_POST['_nffbc_ctas_floating'] ) && is_array( $_POST['_nffbc_ctas_floating'] ) ) {
 			// re-index array
-			$floating = array_values( wp_unslash( $_POST['_nffbc_ctas_floating'] ) );
+			$floating = array_values( map_deep( wp_unslash( $_POST['_nffbc_ctas_floating'] ), 'sanitize_text_field' ) );
 			// sanitize each item
 			foreach ( $floating as $key => $cta ) {
 				$floating[$key] = array_map( 'sanitize_text_field', $cta );

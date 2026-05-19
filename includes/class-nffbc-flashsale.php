@@ -23,7 +23,7 @@ class NFFBC_Flashsale {
 	 * Define the core functionality of the plugin.
 	 */
 	public function __construct() {
-		$this->plugin_name = 'newfolder-flashsale-banner-with-counter';
+		$this->plugin_name = 'nffbc_flashsale';
 		$this->version = NFFBC_FLASHSALE_VERSION;
 
 		$this->load_dependencies();

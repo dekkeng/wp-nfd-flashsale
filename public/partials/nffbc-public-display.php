@@ -28,17 +28,17 @@ if (!function_exists('nffbc_render_icon')) {
 	<!-- Floating CTAs -->
 	<?php if ( ! empty( $ctas_floating ) ) : ?>
 		<div class="nffbc-floating-ctas">
-			<?php foreach ( $ctas_floating as $cta ) : 
-				if ( empty( $cta['icon'] ) && empty( $cta['fonticon'] ) ) continue;
-				$pos_class = 'nffbc-floating-' . esc_attr( $cta['position'] );
+			<?php foreach ( $ctas_floating as $nffbc_cta ) : 
+				if ( empty( $nffbc_cta['icon'] ) && empty( $nffbc_cta['fonticon'] ) ) continue;
+				$nffbc_pos_class = 'nffbc-floating-' . esc_attr( $nffbc_cta['position'] );
 			?>
-				<a href="<?php echo esc_url( $cta['link'] ); ?>" class="nffbc-floating-cta <?php echo $pos_class; ?>" target="_blank" rel="noopener noreferrer">
-					<?php if ( ! empty( $cta['fonticon'] ) ) : ?>
-						<i class="<?php echo esc_attr( $cta['fonticon'] ); ?>" style="font-size: 2em;"></i>
+				<a href="<?php echo esc_url( $nffbc_cta['link'] ); ?>" class="nffbc-floating-cta <?php echo esc_attr( $nffbc_pos_class ); ?>" target="_blank" rel="noopener noreferrer">
+					<?php if ( ! empty( $nffbc_cta['fonticon'] ) ) : ?>
+						<i class="<?php echo esc_attr( $nffbc_cta['fonticon'] ); ?>" style="font-size: 2em;"></i>
 					<?php else : 
-						$icon_url = wp_get_attachment_url( $cta['icon'] );
+						$nffbc_icon_url = wp_get_attachment_url( $nffbc_cta['icon'] );
 					?>
-						<img src="<?php echo esc_url( $icon_url ); ?>" alt="CTA">
+						<img src="<?php echo esc_url( $nffbc_icon_url ); ?>" alt="CTA">
 					<?php endif; ?>
 				</a>
 			<?php endforeach; ?>
@@ -53,12 +53,12 @@ if (!function_exists('nffbc_render_icon')) {
 		
 		<img src="<?php echo esc_url( $image_pc_url ); ?>" alt="Flash Sale">
 		<div class="nffbc-timer-overlay">
-			<?php foreach ($labels as $digit => $label) : 
-				if (empty($visibility_pc[$digit])) continue;
-				if ($digit === 'sep1' || $digit === 'sep2') {
-					echo '<span class="nffbc-digit nffbc-digit-' . $digit . '">:</span>';
+			<?php foreach ($nffbc_labels as $nffbc_digit => $nffbc_label) : 
+				if (empty($visibility_pc[$nffbc_digit])) continue;
+				if ($nffbc_digit === 'sep1' || $nffbc_digit === 'sep2') {
+					echo '<span class="nffbc-digit nffbc-digit-' . esc_attr($nffbc_digit) . '">:</span>';
 				} else {
-					echo '<span class="nffbc-digit nffbc-digit-' . $digit . '" data-val="0">0</span>';
+					echo '<span class="nffbc-digit nffbc-digit-' . esc_attr($nffbc_digit) . '" data-val="0">0</span>';
 				}
 			endforeach; ?>
 		</div>
@@ -76,12 +76,12 @@ if (!function_exists('nffbc_render_icon')) {
 		
 		<img src="<?php echo esc_url( $image_mobile_url ); ?>" alt="Flash Sale">
 		<div class="nffbc-timer-overlay">
-			<?php foreach ($labels as $digit => $label) : 
-				if (empty($visibility_mobile[$digit])) continue;
-				if ($digit === 'sep1' || $digit === 'sep2') {
-					echo '<span class="nffbc-digit nffbc-digit-' . $digit . '">:</span>';
+			<?php foreach ($nffbc_labels as $nffbc_digit => $nffbc_label) : 
+				if (empty($visibility_mobile[$nffbc_digit])) continue;
+				if ($nffbc_digit === 'sep1' || $nffbc_digit === 'sep2') {
+					echo '<span class="nffbc-digit nffbc-digit-' . esc_attr($nffbc_digit) . '">:</span>';
 				} else {
-					echo '<span class="nffbc-digit nffbc-digit-' . $digit . '" data-val="0">0</span>';
+					echo '<span class="nffbc-digit nffbc-digit-' . esc_attr($nffbc_digit) . '" data-val="0">0</span>';
 				}
 			endforeach; ?>
 		</div>
@@ -96,20 +96,20 @@ if (!function_exists('nffbc_render_icon')) {
 		<div class="nffbc-bottom-bar nffbc-layout-<?php echo esc_attr($ctas_bottom['layout']); ?>">
 			
 			<?php if ( in_array($ctas_bottom['layout'], array('full', 'split')) ) : 
-				$btn1 = $ctas_bottom['btn1'];
+				$nffbc_btn1 = $ctas_bottom['btn1'];
 			?>
-				<a href="<?php echo esc_url($btn1['link']); ?>" class="nffbc-bottom-btn nffbc-btn-1" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($btn1['bg_color']); ?>; color: <?php echo esc_attr($btn1['color']); ?>;">
-					<?php echo nffbc_render_icon($btn1['icon'], isset($btn1['fonticon']) ? $btn1['fonticon'] : ''); ?>
-					<span class="nffbc-btn-text"><?php echo esc_html($btn1['text']); ?></span>
+				<a href="<?php echo esc_url($nffbc_btn1['link']); ?>" class="nffbc-bottom-btn nffbc-btn-1" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($nffbc_btn1['bg_color']); ?>; color: <?php echo esc_attr($nffbc_btn1['color']); ?>;">
+					<?php echo wp_kses_post(nffbc_render_icon($nffbc_btn1['icon'], isset($nffbc_btn1['fonticon']) ? $nffbc_btn1['fonticon'] : '')); ?>
+					<span class="nffbc-btn-text"><?php echo esc_html($nffbc_btn1['text']); ?></span>
 				</a>
 			<?php endif; ?>
 
 			<?php if ( $ctas_bottom['layout'] === 'split' ) : 
-				$btn2 = $ctas_bottom['btn2'];
+				$nffbc_btn2 = $ctas_bottom['btn2'];
 			?>
-				<a href="<?php echo esc_url($btn2['link']); ?>" class="nffbc-bottom-btn nffbc-btn-2" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($btn2['bg_color']); ?>; color: <?php echo esc_attr($btn2['color']); ?>;">
-					<?php echo nffbc_render_icon($btn2['icon'], isset($btn2['fonticon']) ? $btn2['fonticon'] : ''); ?>
-					<span class="nffbc-btn-text"><?php echo esc_html($btn2['text']); ?></span>
+				<a href="<?php echo esc_url($nffbc_btn2['link']); ?>" class="nffbc-bottom-btn nffbc-btn-2" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($nffbc_btn2['bg_color']); ?>; color: <?php echo esc_attr($nffbc_btn2['color']); ?>;">
+					<?php echo wp_kses_post(nffbc_render_icon($nffbc_btn2['icon'], isset($nffbc_btn2['fonticon']) ? $nffbc_btn2['fonticon'] : '')); ?>
+					<span class="nffbc-btn-text"><?php echo esc_html($nffbc_btn2['text']); ?></span>
 				</a>
 			<?php endif; ?>
 

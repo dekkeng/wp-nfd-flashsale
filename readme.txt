@@ -8,7 +8,7 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin to create a Flash Sale Banner with a Countdown Timer at the bottom of the screen. Freely customizable for PC and Mobile, supporting Floating and Bottom Bar CTA buttons.
+A plugin to create a customizable Flash Sale Banner with a Countdown Timer for PC and Mobile. Supports Floating and Bottom Bar CTA buttons.
 
 == Description ==
 

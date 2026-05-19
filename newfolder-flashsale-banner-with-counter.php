@@ -6,7 +6,7 @@
  * Author:      Newfolder
  * Author URI:  https://newfolder.co.th
  * License:     GPL-2.0+
- * Text Domain: newfolder-flashsale-banner-with-counter
+ * Text Domain: nffbc_flashsale
  */
 
 // If this file is called directly, abort.
@@ -28,8 +28,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-nffbc-flashsale.php';
 /**
  * Begins execution of the plugin.
  */
-function run_nffbc_flashsale() {
+function nfd_flash_sale_run_nffbc_flashsale() {
 	$plugin = new NFFBC_Flashsale();
 	$plugin->run();
 }
-run_nffbc_flashsale();
+nfd_flash_sale_run_nffbc_flashsale();
