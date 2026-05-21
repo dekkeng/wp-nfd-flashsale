@@ -52,7 +52,7 @@
 		<tr>
 			<th><label for="_nffbc_max_width_pc"><?php esc_html_e( 'PC Max Width', 'nffbc-flashsale' ); ?></label></th>
 			<td>
-				<input type="text" name="_nffbc_max_width_pc" id="_nffbc_max_width_pc" value="<?php echo esc_attr( $max_width_pc ); ?>" class="regular-text" placeholder="e.g. 1000px or 100%" />
+				<input type="text" name="_nffbc_max_width_pc" id="_nffbc_max_width_pc" value="<?php echo esc_attr( $max_width_pc ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. 1000px or 100%', 'nffbc-flashsale' ); ?>" />
 				<p class="description"><?php esc_html_e( 'Maximum width for the PC layout.', 'nffbc-flashsale' ); ?></p>
 			</td>
 		</tr>
@@ -88,17 +88,17 @@
 					<?php esc_html_e( 'Add background box to digits (H1, H2, M1, M2, S1, S2)', 'nffbc-flashsale' ); ?>
 				</td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo $digit_bg_enable_pc ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo esc_attr( $digit_bg_enable_pc ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_color_pc"><?php esc_html_e( 'Digit Background Color', 'nffbc-flashsale' ); ?></label></th>
 				<td><input type="text" name="_nffbc_digit_bg_color_pc" id="_nffbc_digit_bg_color_pc" value="<?php echo esc_attr( $digit_bg_color_pc ); ?>" class="nffbc-color-picker" /></td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo $digit_bg_enable_pc ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo esc_attr( $digit_bg_enable_pc ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_padding_pc"><?php esc_html_e( 'Digit Padding', 'nffbc-flashsale' ); ?></label></th>
-				<td><input type="text" name="_nffbc_digit_bg_padding_pc" id="_nffbc_digit_bg_padding_pc" value="<?php echo esc_attr( $digit_bg_padding_pc ); ?>" class="regular-text" placeholder="e.g. 5px 10px" /></td>
+				<td><input type="text" name="_nffbc_digit_bg_padding_pc" id="_nffbc_digit_bg_padding_pc" value="<?php echo esc_attr( $digit_bg_padding_pc ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. 5px 10px', 'nffbc-flashsale' ); ?>" /></td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo $digit_bg_enable_pc ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-pc" style="<?php echo esc_attr( $digit_bg_enable_pc ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_radius_pc"><?php esc_html_e( 'Digit Border Radius', 'nffbc-flashsale' ); ?></label></th>
-				<td><input type="text" name="_nffbc_digit_bg_radius_pc" id="_nffbc_digit_bg_radius_pc" value="<?php echo esc_attr( $digit_bg_radius_pc ); ?>" class="regular-text" placeholder="e.g. 5px" /></td>
+				<td><input type="text" name="_nffbc_digit_bg_radius_pc" id="_nffbc_digit_bg_radius_pc" value="<?php echo esc_attr( $digit_bg_radius_pc ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. 5px', 'nffbc-flashsale' ); ?>" /></td>
 			</tr>
 		</table>
 
@@ -130,7 +130,7 @@
 					$nffbc_is_visible = !empty($visibility_pc[$nffbc_digit]);
 					$nffbc_preview_char = ($nffbc_digit === 'sep1' || $nffbc_digit === 'sep2') ? ':' : '8';
 				?>
-					<div class="nffbc-digit nffbc-digit-<?php echo esc_attr($nffbc_digit); ?>" data-digit="<?php echo esc_attr($nffbc_digit); ?>" title="Drag to position <?php echo esc_html($nffbc_label); ?>" style="left:<?php echo esc_attr($digit_pos_pc[$nffbc_digit]['x']); ?>%; top:<?php echo esc_attr($digit_pos_pc[$nffbc_digit]['y']); ?>%; display: <?php echo $nffbc_is_visible ? 'block' : 'none'; ?>; position:absolute; cursor:move;">
+					<div class="nffbc-digit nffbc-digit-<?php echo esc_attr($nffbc_digit); ?>" data-digit="<?php echo esc_attr($nffbc_digit); ?>" title="<?php echo esc_attr( sprintf( __( 'Drag to position %s', 'nffbc-flashsale' ), $nffbc_label ) ); ?>" style="left:<?php echo esc_attr($digit_pos_pc[$nffbc_digit]['x']); ?>%; top:<?php echo esc_attr($digit_pos_pc[$nffbc_digit]['y']); ?>%; display: <?php echo esc_attr( $nffbc_is_visible ? 'block' : 'none' ); ?>; position:absolute; cursor:move;">
 						<?php echo esc_html($nffbc_preview_char); ?>
 						<span style="position:absolute; top:-8px; right:-15px; font-size:10px; font-weight:normal; background:rgba(0,0,0,0.7); color:#fff; padding:2px 4px; border-radius:3px; line-height:1; font-family:sans-serif; letter-spacing:0;"><?php echo esc_html($nffbc_label); ?></span>
 					</div>
@@ -142,7 +142,7 @@
 			<div style="display:flex; justify-content:space-between; align-items:center;">
 				<strong><?php esc_html_e('Manual Positions (%):', 'nffbc-flashsale' ); ?></strong>
 				<div>
-					<label style="margin-right: 10px; font-size: 13px;">Gap (%): 
+					<label style="margin-right: 10px; font-size: 13px;"><?php esc_html_e( 'Gap (%):', 'nffbc-flashsale' ); ?> 
 						<input type="number" step="0.1" name="_nffbc_auto_gap_pc" class="nffbc-auto-gap" value="<?php echo esc_attr($auto_gap_pc); ?>" style="width: 60px;">
 					</label>
 					<button type="button" class="button nffbc-auto-align-btn" data-device="pc"><?php esc_html_e('Auto Align (from H1)', 'nffbc-flashsale' ); ?></button>
@@ -186,17 +186,17 @@
 					<?php esc_html_e( 'Add background box to digits (H1, H2, M1, M2, S1, S2)', 'nffbc-flashsale' ); ?>
 				</td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo $digit_bg_enable_mobile ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo esc_attr( $digit_bg_enable_mobile ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_color_mobile"><?php esc_html_e( 'Digit Background Color', 'nffbc-flashsale' ); ?></label></th>
 				<td><input type="text" name="_nffbc_digit_bg_color_mobile" id="_nffbc_digit_bg_color_mobile" value="<?php echo esc_attr( $digit_bg_color_mobile ); ?>" class="nffbc-color-picker" /></td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo $digit_bg_enable_mobile ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo esc_attr( $digit_bg_enable_mobile ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_padding_mobile"><?php esc_html_e( 'Digit Padding', 'nffbc-flashsale' ); ?></label></th>
-				<td><input type="text" name="_nffbc_digit_bg_padding_mobile" id="_nffbc_digit_bg_padding_mobile" value="<?php echo esc_attr( $digit_bg_padding_mobile ); ?>" class="regular-text" placeholder="e.g. 5px 10px" /></td>
+				<td><input type="text" name="_nffbc_digit_bg_padding_mobile" id="_nffbc_digit_bg_padding_mobile" value="<?php echo esc_attr( $digit_bg_padding_mobile ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. 5px 10px', 'nffbc-flashsale' ); ?>" /></td>
 			</tr>
-			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo $digit_bg_enable_mobile ? '' : 'display:none;'; ?>">
+			<tr class="nffbc-digit-bg-settings-mobile" style="<?php echo esc_attr( $digit_bg_enable_mobile ? '' : 'display:none;' ); ?>">
 				<th><label for="_nffbc_digit_bg_radius_mobile"><?php esc_html_e( 'Digit Border Radius', 'nffbc-flashsale' ); ?></label></th>
-				<td><input type="text" name="_nffbc_digit_bg_radius_mobile" id="_nffbc_digit_bg_radius_mobile" value="<?php echo esc_attr( $digit_bg_radius_mobile ); ?>" class="regular-text" placeholder="e.g. 5px" /></td>
+				<td><input type="text" name="_nffbc_digit_bg_radius_mobile" id="_nffbc_digit_bg_radius_mobile" value="<?php echo esc_attr( $digit_bg_radius_mobile ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. 5px', 'nffbc-flashsale' ); ?>" /></td>
 			</tr>
 		</table>
 
@@ -226,7 +226,7 @@
 					$nffbc_is_visible = !empty($visibility_mobile[$nffbc_digit]);
 					$nffbc_preview_char = ($nffbc_digit === 'sep1' || $nffbc_digit === 'sep2') ? ':' : '8';
 				?>
-					<div class="nffbc-digit nffbc-digit-<?php echo esc_attr($nffbc_digit); ?>" data-digit="<?php echo esc_attr($nffbc_digit); ?>" title="Drag to position <?php echo esc_html($nffbc_label); ?>" style="left:<?php echo esc_attr($digit_pos_mobile[$nffbc_digit]['x']); ?>%; top:<?php echo esc_attr($digit_pos_mobile[$nffbc_digit]['y']); ?>%; display: <?php echo $nffbc_is_visible ? 'block' : 'none'; ?>; position:absolute; cursor:move;">
+					<div class="nffbc-digit nffbc-digit-<?php echo esc_attr($nffbc_digit); ?>" data-digit="<?php echo esc_attr($nffbc_digit); ?>" title="<?php echo esc_attr( sprintf( __( 'Drag to position %s', 'nffbc-flashsale' ), $nffbc_label ) ); ?>" style="left:<?php echo esc_attr($digit_pos_mobile[$nffbc_digit]['x']); ?>%; top:<?php echo esc_attr($digit_pos_mobile[$nffbc_digit]['y']); ?>%; display: <?php echo esc_attr( $nffbc_is_visible ? 'block' : 'none' ); ?>; position:absolute; cursor:move;">
 						<?php echo esc_html($nffbc_preview_char); ?>
 						<span style="position:absolute; top:-8px; right:-15px; font-size:10px; font-weight:normal; background:rgba(0,0,0,0.7); color:#fff; padding:2px 4px; border-radius:3px; line-height:1; font-family:sans-serif; letter-spacing:0;"><?php echo esc_html($nffbc_label); ?></span>
 					</div>
@@ -238,7 +238,7 @@
 			<div style="display:flex; justify-content:space-between; align-items:center;">
 				<strong><?php esc_html_e('Manual Positions (%):', 'nffbc-flashsale' ); ?></strong>
 				<div>
-					<label style="margin-right: 10px; font-size: 13px;">Gap (%): 
+					<label style="margin-right: 10px; font-size: 13px;"><?php esc_html_e( 'Gap (%):', 'nffbc-flashsale' ); ?> 
 						<input type="number" step="0.1" name="_nffbc_auto_gap_mobile" class="nffbc-auto-gap" value="<?php echo esc_attr($auto_gap_mobile); ?>" style="width: 60px;">
 					</label>
 					<button type="button" class="button nffbc-auto-align-btn" data-device="mobile"><?php esc_html_e('Auto Align (from H1)', 'nffbc-flashsale' ); ?></button>
@@ -276,7 +276,7 @@
 		</tr>
 	</table>
 
-	<div id="nffbc-bottom-btn1-settings" class="nffbc-cta-settings" style="<?php echo $ctas_bottom['layout'] === 'none' ? 'display:none;' : ''; ?>">
+	<div id="nffbc-bottom-btn1-settings" class="nffbc-cta-settings" style="<?php echo esc_attr( $ctas_bottom['layout'] === 'none' ? 'display:none;' : '' ); ?>">
 		<h4><?php esc_html_e( 'Button 1 (Left / Full Width)', 'nffbc-flashsale' ); ?></h4>
 		<table class="form-table">
 			<tr>
@@ -301,11 +301,11 @@
 					<?php $nffbc_current_icon = isset($ctas_bottom['btn1']['icon']) ? $ctas_bottom['btn1']['icon'] : ''; ?>
 					<select name="_nffbc_ctas_bottom[btn1][icon]" class="nffbc-icon-select" data-btn="btn1">
 						<option value="" <?php selected($nffbc_current_icon, ''); ?>><?php esc_html_e('None', 'nffbc-flashsale' ); ?></option>
-						<option value="line" <?php selected($nffbc_current_icon, 'line'); ?>>LINE (SVG)</option>
-						<option value="phone" <?php selected($nffbc_current_icon, 'phone'); ?>>Phone (SVG)</option>
-						<option value="facebook" <?php selected($nffbc_current_icon, 'facebook'); ?>>Facebook (SVG)</option>
-						<option value="messenger" <?php selected($nffbc_current_icon, 'messenger'); ?>>Messenger (SVG)</option>
-						<option value="cart" <?php selected($nffbc_current_icon, 'cart'); ?>>Cart (SVG)</option>
+						<option value="line" <?php selected($nffbc_current_icon, 'line'); ?>><?php esc_html_e( 'LINE (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="phone" <?php selected($nffbc_current_icon, 'phone'); ?>><?php esc_html_e( 'Phone (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="facebook" <?php selected($nffbc_current_icon, 'facebook'); ?>><?php esc_html_e( 'Facebook (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="messenger" <?php selected($nffbc_current_icon, 'messenger'); ?>><?php esc_html_e( 'Messenger (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="cart" <?php selected($nffbc_current_icon, 'cart'); ?>><?php esc_html_e( 'Cart (SVG)', 'nffbc-flashsale' ); ?></option>
 						<option value="custom" <?php selected(is_numeric($nffbc_current_icon), true); ?>><?php esc_html_e('Custom Image', 'nffbc-flashsale' ); ?></option>
 					</select>
 				</td>
@@ -328,7 +328,7 @@
 		</table>
 	</div>
 
-	<div id="nffbc-bottom-btn2-settings" class="nffbc-cta-settings" style="<?php echo $ctas_bottom['layout'] === 'split' ? '' : 'display:none;'; ?>">
+	<div id="nffbc-bottom-btn2-settings" class="nffbc-cta-settings" style="<?php echo esc_attr( $ctas_bottom['layout'] === 'split' ? '' : 'display:none;' ); ?>">
 		<h4><?php esc_html_e( 'Button 2 (Right)', 'nffbc-flashsale' ); ?></h4>
 		<table class="form-table">
 			<tr>
@@ -353,11 +353,11 @@
 					<?php $nffbc_current_icon2 = isset($ctas_bottom['btn2']['icon']) ? $ctas_bottom['btn2']['icon'] : ''; ?>
 					<select name="_nffbc_ctas_bottom[btn2][icon]" class="nffbc-icon-select" data-btn="btn2">
 						<option value="" <?php selected($nffbc_current_icon2, ''); ?>><?php esc_html_e('None', 'nffbc-flashsale' ); ?></option>
-						<option value="line" <?php selected($nffbc_current_icon2, 'line'); ?>>LINE (SVG)</option>
-						<option value="phone" <?php selected($nffbc_current_icon2, 'phone'); ?>>Phone (SVG)</option>
-						<option value="facebook" <?php selected($nffbc_current_icon2, 'facebook'); ?>>Facebook (SVG)</option>
-						<option value="messenger" <?php selected($nffbc_current_icon2, 'messenger'); ?>>Messenger (SVG)</option>
-						<option value="cart" <?php selected($nffbc_current_icon2, 'cart'); ?>>Cart (SVG)</option>
+						<option value="line" <?php selected($nffbc_current_icon2, 'line'); ?>><?php esc_html_e( 'LINE (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="phone" <?php selected($nffbc_current_icon2, 'phone'); ?>><?php esc_html_e( 'Phone (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="facebook" <?php selected($nffbc_current_icon2, 'facebook'); ?>><?php esc_html_e( 'Facebook (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="messenger" <?php selected($nffbc_current_icon2, 'messenger'); ?>><?php esc_html_e( 'Messenger (SVG)', 'nffbc-flashsale' ); ?></option>
+						<option value="cart" <?php selected($nffbc_current_icon2, 'cart'); ?>><?php esc_html_e( 'Cart (SVG)', 'nffbc-flashsale' ); ?></option>
 						<option value="custom" <?php selected(is_numeric($nffbc_current_icon2), true); ?>><?php esc_html_e('Custom Image', 'nffbc-flashsale' ); ?></option>
 					</select>
 				</td>
@@ -391,7 +391,7 @@
 				<table class="form-table">
 					<tr>
 						<th><label><?php esc_html_e( 'Font Icon Class', 'nffbc-flashsale' ); ?></label></th>
-						<td><input type="text" name="_nffbc_ctas_floating[<?php echo esc_attr($nffbc_i); ?>][fonticon]" value="<?php echo esc_attr(isset($nffbc_cta['fonticon']) ? $nffbc_cta['fonticon'] : ''); ?>" class="regular-text" placeholder="e.g. fab fa-line" /><br><small><?php esc_html_e( 'Overrides image icon below if set.', 'nffbc-flashsale' ); ?></small></td>
+						<td><input type="text" name="_nffbc_ctas_floating[<?php echo esc_attr($nffbc_i); ?>][fonticon]" value="<?php echo esc_attr(isset($nffbc_cta['fonticon']) ? $nffbc_cta['fonticon'] : ''); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. fab fa-line', 'nffbc-flashsale' ); ?>" /><br><small><?php esc_html_e( 'Overrides image icon below if set.', 'nffbc-flashsale' ); ?></small></td>
 					</tr>
 					<tr>
 						<th><label><?php esc_html_e( 'Icon Image', 'nffbc-flashsale' ); ?></label></th>
@@ -432,7 +432,7 @@
 			<table class="form-table">
 				<tr>
 					<th><label><?php esc_html_e( 'Font Icon Class', 'nffbc-flashsale' ); ?></label></th>
-					<td><input type="text" name="_nffbc_ctas_floating[{{id}}][fonticon]" value="" class="regular-text" placeholder="e.g. fab fa-line" /><br><small><?php esc_html_e( 'Overrides image icon below if set.', 'nffbc-flashsale' ); ?></small></td>
+					<td><input type="text" name="_nffbc_ctas_floating[{{id}}][fonticon]" value="" class="regular-text" placeholder="<?php esc_attr_e( 'e.g. fab fa-line', 'nffbc-flashsale' ); ?>" /><br><small><?php esc_html_e( 'Overrides image icon below if set.', 'nffbc-flashsale' ); ?></small></td>
 				</tr>
 				<tr>
 					<th><label><?php esc_html_e( 'Icon Image', 'nffbc-flashsale' ); ?></label></th>

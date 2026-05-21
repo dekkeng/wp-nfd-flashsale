@@ -38,7 +38,7 @@ if (!function_exists('nffbc_render_icon')) {
 					<?php else : 
 						$nffbc_icon_url = wp_get_attachment_url( $nffbc_cta['icon'] );
 					?>
-						<img src="<?php echo esc_url( $nffbc_icon_url ); ?>" alt="CTA">
+						<img src="<?php echo esc_url( $nffbc_icon_url ); ?>" alt="<?php esc_attr_e( 'CTA', 'nffbc-flashsale' ); ?>">
 					<?php endif; ?>
 				</a>
 			<?php endforeach; ?>
@@ -51,7 +51,7 @@ if (!function_exists('nffbc_render_icon')) {
 			<a href="<?php echo esc_url( $link_url ); ?>" class="nffbc-banner-link" target="_blank" rel="noopener noreferrer">
 		<?php endif; ?>
 		
-		<img src="<?php echo esc_url( $image_pc_url ); ?>" alt="Flash Sale">
+		<img src="<?php echo esc_url( $image_pc_url ); ?>" alt="<?php esc_attr_e( 'Flash Sale', 'nffbc-flashsale' ); ?>">
 		<div class="nffbc-timer-overlay">
 			<?php foreach ($nffbc_labels as $nffbc_digit => $nffbc_label) : 
 				if (empty($visibility_pc[$nffbc_digit])) continue;
@@ -74,7 +74,7 @@ if (!function_exists('nffbc_render_icon')) {
 			<a href="<?php echo esc_url( $link_url ); ?>" class="nffbc-banner-link" target="_blank" rel="noopener noreferrer">
 		<?php endif; ?>
 		
-		<img src="<?php echo esc_url( $image_mobile_url ); ?>" alt="Flash Sale">
+		<img src="<?php echo esc_url( $image_mobile_url ); ?>" alt="<?php esc_attr_e( 'Flash Sale', 'nffbc-flashsale' ); ?>">
 		<div class="nffbc-timer-overlay">
 			<?php foreach ($nffbc_labels as $nffbc_digit => $nffbc_label) : 
 				if (empty($visibility_mobile[$nffbc_digit])) continue;

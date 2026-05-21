@@ -15,6 +15,17 @@ class NFFBC_Frontend {
 
 	private $active_sale_id = -1;
 
+	/**
+	 * Sanitize a value for use in CSS output.
+	 * Strips anything that is not a safe CSS character.
+	 *
+	 * @param string $value The value to sanitize.
+	 * @return string Sanitized value safe for CSS.
+	 */
+	private function sanitize_css_value( $value ) {
+		return preg_replace( '/[^a-zA-Z0-9#.,\-_%()\s]/', '', $value );
+	}
+
 	private function get_active_flashsale() {
 		if ( $this->active_sale_id !== -1 ) {
 			return $this->active_sale_id;
@@ -106,24 +117,24 @@ class NFFBC_Frontend {
 
 			$custom_css = "
 				#newfolder-flashsale-banner-with-counter-wrapper {
-					max-width: {$max_width_pc} !important;
+					max-width: " . esc_attr( $this->sanitize_css_value( $max_width_pc ) ) . " !important;
 				}
 				@media (min-width: 769px) {
 					#newfolder-flashsale-banner-with-counter-wrapper {
-						--nffbc-font-size: {$font_size_pc}px;
-						--nffbc-font-color: {$font_color_pc};
+						--nffbc-font-size: " . intval( $font_size_pc ) . "px;
+						--nffbc-font-color: " . esc_attr( $this->sanitize_css_value( $font_color_pc ) ) . ";
 					}
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-digit-sep1,
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-digit-sep2 {
-						color: {$sep_color_pc};
+						color: " . esc_attr( $this->sanitize_css_value( $sep_color_pc ) ) . ";
 					}
 			";
 			if ( $digit_bg_enable_pc == '1' ) {
 				$custom_css .= "
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-banner-pc .nffbc-digit:not(.nffbc-digit-sep1):not(.nffbc-digit-sep2) {
-						background-color: {$digit_bg_color_pc};
-						padding: {$digit_bg_padding_pc};
-						border-radius: {$digit_bg_radius_pc};
+						background-color: " . esc_attr( $this->sanitize_css_value( $digit_bg_color_pc ) ) . ";
+						padding: " . esc_attr( $this->sanitize_css_value( $digit_bg_padding_pc ) ) . ";
+						border-radius: " . esc_attr( $this->sanitize_css_value( $digit_bg_radius_pc ) ) . ";
 						line-height: 1;
 					}
 				";
@@ -132,30 +143,32 @@ class NFFBC_Frontend {
 					.nffbc-banner-pc { display: block; }
 					.nffbc-banner-mobile { display: none; }
 			";
-			$labels = array('h1' => 'H1', 'h2' => 'H2', 'sep1' => ':', 'm1' => 'M1', 'm2' => 'M2', 'sep2' => ':', 's1' => 'S1', 's2' => 'S2');
-			foreach ($labels as $digit => $label) {
+			$nffbc_labels = array('h1' => 'H1', 'h2' => 'H2', 'sep1' => ':', 'm1' => 'M1', 'm2' => 'M2', 'sep2' => ':', 's1' => 'S1', 's2' => 'S2');
+			foreach ($nffbc_labels as $digit => $label) {
 				if (isset($digit_pos_pc[$digit]) && !empty($visibility_pc[$digit])) {
-					$custom_css .= ".nffbc-banner-pc .nffbc-digit-{$digit} { left: {$digit_pos_pc[$digit]['x']}%; top: {$digit_pos_pc[$digit]['y']}%; }\n";
+					$nffbc_x = floatval( $digit_pos_pc[$digit]['x'] );
+					$nffbc_y = floatval( $digit_pos_pc[$digit]['y'] );
+					$custom_css .= ".nffbc-banner-pc .nffbc-digit-" . esc_attr( $digit ) . " { left: " . esc_attr( $nffbc_x ) . "%; top: " . esc_attr( $nffbc_y ) . "%; }\n";
 				}
 			}
 			$custom_css .= "}
 				@media (max-width: 768px) {
 					#newfolder-flashsale-banner-with-counter-wrapper {
-						--nffbc-font-size: {$font_size_mobile}px;
-						--nffbc-font-color: {$font_color_mobile};
+						--nffbc-font-size: " . intval( $font_size_mobile ) . "px;
+						--nffbc-font-color: " . esc_attr( $this->sanitize_css_value( $font_color_mobile ) ) . ";
 						max-width: 100% !important;
 					}
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-digit-sep1,
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-digit-sep2 {
-						color: {$sep_color_mobile};
+						color: " . esc_attr( $this->sanitize_css_value( $sep_color_mobile ) ) . ";
 					}
 			";
 			if ( $digit_bg_enable_mobile == '1' ) {
 				$custom_css .= "
 					#newfolder-flashsale-banner-with-counter-wrapper .nffbc-banner-mobile .nffbc-digit:not(.nffbc-digit-sep1):not(.nffbc-digit-sep2) {
-						background-color: {$digit_bg_color_mobile};
-						padding: {$digit_bg_padding_mobile};
-						border-radius: {$digit_bg_radius_mobile};
+						background-color: " . esc_attr( $this->sanitize_css_value( $digit_bg_color_mobile ) ) . ";
+						padding: " . esc_attr( $this->sanitize_css_value( $digit_bg_padding_mobile ) ) . ";
+						border-radius: " . esc_attr( $this->sanitize_css_value( $digit_bg_radius_mobile ) ) . ";
 						line-height: 1;
 					}
 				";
@@ -164,9 +177,11 @@ class NFFBC_Frontend {
 					.nffbc-banner-pc { display: none; }
 					.nffbc-banner-mobile { display: block; }
 			";
-			foreach ($labels as $digit => $label) {
+			foreach ($nffbc_labels as $digit => $label) {
 				if (isset($digit_pos_mobile[$digit]) && !empty($visibility_mobile[$digit])) {
-					$custom_css .= ".nffbc-banner-mobile .nffbc-digit-{$digit} { left: {$digit_pos_mobile[$digit]['x']}%; top: {$digit_pos_mobile[$digit]['y']}%; }\n";
+					$nffbc_x = floatval( $digit_pos_mobile[$digit]['x'] );
+					$nffbc_y = floatval( $digit_pos_mobile[$digit]['y'] );
+					$custom_css .= ".nffbc-banner-mobile .nffbc-digit-" . esc_attr( $digit ) . " { left: " . esc_attr( $nffbc_x ) . "%; top: " . esc_attr( $nffbc_y ) . "%; }\n";
 				}
 			}
 			$custom_css .= "}";
