@@ -267,6 +267,9 @@ class NFFBC_Frontend {
 		$ctas_floating = get_post_meta( $active_sale, '_nffbc_ctas_floating', true );
 		if ( ! is_array( $ctas_floating ) ) $ctas_floating = array();
 
+		// Labels/order for the digit spans rendered in the partial.
+		$nffbc_labels = array('h1' => 'H1', 'h2' => 'H2', 'sep1' => ':', 'm1' => 'M1', 'm2' => 'M2', 'sep2' => ':', 's1' => 'S1', 's2' => 'S2');
+
 		// Pass data to JS
 		$js_data = array(
 			'endTime' => $end_datetime,

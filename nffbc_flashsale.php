@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Newfolder Flashsale Banner with Counter
  * Description: Plugin for displaying a Flash Sale banner with a countdown timer at the bottom of the screen.
- * Version:     1.0.13
+ * Version:     1.0.14
  * Author:      Newfolder
  * Author URI:  https://newfolder.co.th
  * License:     GPL-2.0+
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'NFFBC_FLASHSALE_VERSION', '1.0.13' );
+define( 'NFFBC_FLASHSALE_VERSION', '1.0.14' );
 define( 'NFFBC_FLASHSALE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NFFBC_FLASHSALE_URL', plugin_dir_url( __FILE__ ) );
 

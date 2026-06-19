@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	var loopHours = parseInt(nffbc_flashsale_data.loopHours, 10) || 0;
 	var loopMs = loopHours * 3600 * 1000;
 
+	// No valid end date configured: hide the banner instead of showing NaN.
+	if (isNaN(baseEndTime)) {
+		wrapper.style.display = 'none';
+		return;
+	}
+
 	function calculateEndTime() {
 		var now = new Date().getTime();
 		if (now < baseEndTime) {

@@ -22,6 +22,19 @@ if (!function_exists('nffbc_render_icon')) {
 		return '';
 	}
 }
+
+// Allowed tags for icon output. wp_kses_post() strips <svg>/<path>, so we
+// need an explicit allowlist that keeps the inline SVG icons intact.
+if (!function_exists('nffbc_icon_allowed_tags')) {
+	function nffbc_icon_allowed_tags() {
+		return array(
+			'i'    => array( 'class' => true, 'style' => true ),
+			'img'  => array( 'src' => true, 'alt' => true, 'class' => true, 'style' => true ),
+			'svg'  => array( 'xmlns' => true, 'viewbox' => true, 'fill' => true, 'class' => true, 'style' => true, 'width' => true, 'height' => true ),
+			'path' => array( 'd' => true, 'fill' => true ),
+		);
+	}
+}
 ?>
 
 <div id="newfolder-flashsale-banner-with-counter-wrapper" style="display:none;">
@@ -99,7 +112,7 @@ if (!function_exists('nffbc_render_icon')) {
 				$nffbc_btn1 = $ctas_bottom['btn1'];
 			?>
 				<a href="<?php echo esc_url($nffbc_btn1['link']); ?>" class="nffbc-bottom-btn nffbc-btn-1" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($nffbc_btn1['bg_color']); ?>; color: <?php echo esc_attr($nffbc_btn1['color']); ?>;">
-					<?php echo wp_kses_post(nffbc_render_icon($nffbc_btn1['icon'], isset($nffbc_btn1['fonticon']) ? $nffbc_btn1['fonticon'] : '')); ?>
+					<?php echo wp_kses(nffbc_render_icon($nffbc_btn1['icon'], isset($nffbc_btn1['fonticon']) ? $nffbc_btn1['fonticon'] : ''), nffbc_icon_allowed_tags()); ?>
 					<span class="nffbc-btn-text"><?php echo esc_html($nffbc_btn1['text']); ?></span>
 				</a>
 			<?php endif; ?>
@@ -108,7 +121,7 @@ if (!function_exists('nffbc_render_icon')) {
 				$nffbc_btn2 = $ctas_bottom['btn2'];
 			?>
 				<a href="<?php echo esc_url($nffbc_btn2['link']); ?>" class="nffbc-bottom-btn nffbc-btn-2" target="_blank" rel="noopener noreferrer" style="background-color: <?php echo esc_attr($nffbc_btn2['bg_color']); ?>; color: <?php echo esc_attr($nffbc_btn2['color']); ?>;">
-					<?php echo wp_kses_post(nffbc_render_icon($nffbc_btn2['icon'], isset($nffbc_btn2['fonticon']) ? $nffbc_btn2['fonticon'] : '')); ?>
+					<?php echo wp_kses(nffbc_render_icon($nffbc_btn2['icon'], isset($nffbc_btn2['fonticon']) ? $nffbc_btn2['fonticon'] : ''), nffbc_icon_allowed_tags()); ?>
 					<span class="nffbc-btn-text"><?php echo esc_html($nffbc_btn2['text']); ?></span>
 				</a>
 			<?php endif; ?>
